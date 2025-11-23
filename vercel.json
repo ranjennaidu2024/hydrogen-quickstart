@@ -1,14 +1,19 @@
 {
-  "functions": {
-    "dist/server/index.js": {
-      "memory": 2048,
-      "maxDuration": 60
+  "builds": [
+    {
+      "src": "dist/server/index.js",
+      "use": "@vercel/node",
+      "config": {
+        "maxDuration": 60,
+        "memory": 2048
+      }
     }
-  },
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "dist/server/index.js"
     }
-  },
+  ],
   "outputDirectory": "dist/client"
 }
